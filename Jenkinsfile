@@ -22,7 +22,10 @@ pipeline {
         stage("deploy") {
             steps {
                 script {
-                    echo "Deploying the application..."
+                    def dockerCmd = 'docker run -d -p 3080:3080 kasice/my-app:latest'
+                    sshagent(credentials: ['ec2-server-key']) {
+                        sh "ssh -o StrictHostKeyChecking=no ec2-user@99.79.10.124 ${dockerCmd}"
+                   }
                 }
             }
         }               
