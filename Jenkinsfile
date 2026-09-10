@@ -10,7 +10,7 @@ library identifier: 'jenkins-shared-library@master', retriever: modernSCM(
 pipeline {
     agent any
     tools {
-        maven 'Maven 3.9'
+        maven 'maven-3.9'
     }
     environment {
         IMAGE_NAME = 'kasice/my-app:latest'
